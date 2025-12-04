@@ -1,0 +1,124 @@
+<!-- ABA DE DESCONTOS - JÁ ABERTA AUTOMATICAMENTE -->
+<style>
+  /* Overlay escuro (opcional – pode remover se não quiser) */
+  .overlay-fixo-desconto {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 998;
+  }
+
+  /* Aba já aberta */
+  #abaDescontosAberta {
+    position: fixed;
+    top: 0; right: 0;
+    width: 460px;
+    max-width: 92vw;
+    height: 100%;
+    background: white;
+    box-shadow: -10px 0 40px rgba(0,0,0,0.4);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    border-radius: 30px 0 0 30px;
+    overflow: hidden;
+  }
+
+  .desconto-header {
+    padding: 25px;
+    background: rgb(4, 44, 94);
+    color: white;
+    text-align: center;
+    position: relative;
+    border-radius: 30px 0 0 0;
+  }
+  .desconto-header h2 { margin: 0; font-size: 28px; font-weight: bold; }
+  .fechar-desconto {
+    position: absolute; top: 15px; right: 20px;
+    background: none; border: none; color: white; font-size: 40px; cursor: pointer;
+  }
+
+  .desconto-conteudo {
+    flex: 1;
+    overflow-y: auto;
+    padding: 30px;
+    background: #f8f9fa;
+    text-align: center;
+  }
+
+  .total-economizado {
+    font-size: 44px;
+    font-weight: bold;
+    color: rgb(4, 44, 94);
+    margin: 20px 0 10px;
+  }
+
+  /* Gráfico circular */
+  .circulo {
+    width: 180px;
+    height: 180px;
+    margin: 25px auto;
+  }
+
+  .item-desconto {
+    background: white;
+    border-radius: 20px;
+    padding: 18px;
+    margin-bottom: 16px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .valor-desconto { font-size: 20px; font-weight: bold; color: #27ae60; }
+</style>
+
+<!-- Fundo escuro (opcional) -->
+<div class="overlay-fixo-desconto" onclick="document.getElementById('abaDescontosAberta').style.display='none'; this.style.display='none';"></div>
+
+<!-- ABA JÁ ABERTA -->
+<div id="abaDescontosAberta">
+  <div class="desconto-header">
+    <h2>Descontos Aplicados</h2>
+    <button class="fechar-desconto" onclick="document.getElementById('abaDescontosAberta').style.display='none'; document.querySelector('.overlay-fixo-desconto').style.display='none';">
+      ×
+    </button>
+  </div>
+
+  <div class="desconto-conteudo">
+    <div class="total-economizado">R$ 1.847,50</div>
+    <p style="color:#555; font-size:18px; margin-bottom:30px;">economizados até hoje</p>
+
+    <!-- Gráfico circular 78% -->
+    <svg class="circulo" viewBox="0 0 36 36">
+      <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+            fill="none" stroke="#e0e0e0" stroke-width="3.8"/>
+      <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+            fill="none" stroke="rgb(4, 44, 94)" stroke-width="4"
+            stroke-dasharray="78, 100" stroke-linecap="round"/>
+      <text x="18" y="20.35" text-anchor="middle" font-size="8" font-weight="bold" fill="rgb(4, 44, 94)">78%</text>
+    </svg>
+    <p style="color:#555; margin-top:-10px;">de desconto médio</p>
+
+    <h3 style="margin:35px 0 20px; color:rgb(4,44,94); font-size:20px;">Últimos descontos</h3>
+
+    <div class="item-desconto">
+      <div><strong>Cupom: BEMVINDO20</strong><br><small>Pedido #1847</small></div>
+      <div class="valor-desconto">-R$ 89,90</div>
+    </div>
+    <div class="item-desconto">
+      <div><strong>Black Friday 30%</strong><br><small>Pedido #1832</small></div>
+      <div class="valor-desconto">-R$ 347,00</div>
+    </div>
+    <div class="item-desconto">
+      <div><strong>Cupom: FRETE10</strong><br><small>Pedido #1821</small></div>
+      <div class="valor-desconto">-R$ 49,90</div>
+    </div>
+    <div class="item-desconto">
+      <div><strong>Promoção Relâmpago</strong><br><small>Pedido #1815</small></div>
+      <div class="valor-desconto">-R$ 156,70</div>
+    </div>
+  </div>
+</div>

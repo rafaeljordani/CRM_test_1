@@ -1,0 +1,148 @@
+<!-- ABA LATERAL DE NOTIFICAÇÕES - AGORA 100% IGUAL À ABA DE DESCONTOS -->
+<style>
+  /* Overlay exatamente igual ao da aba de descontos */
+  .overlay-fixo-notif {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);   /* exatamente igual */
+    z-index: 998;
+  }
+
+  /* Aba de notificações - mesmo padrão da de descontos */
+  #abaNotificacoesAberta {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 460px;
+    max-width: 92vw;
+    height: 100%;
+    background: white;
+    box-shadow: -10px 0 40px rgba(0,0,0,0.4);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    border-radius: 30px 0 0 30px;
+    overflow: hidden;
+  }
+
+  .abaNotif-header {
+    padding: 25px;
+    background: rgb(4, 44, 94);
+    color: white;
+    text-align: center;
+    position: relative;
+    border-radius: 30px 0 0 0;
+  }
+  .abaNotif-header h2 { margin: 0; font-size: 28px; font-weight: bold; }
+  .fechar-aba {
+    position: absolute; top: 15px; right: 20px;
+    background: none; border: none; color: white; font-size: 40px; cursor: pointer;
+  }
+
+  .abaNotif-conteudo {
+    flex: 1;
+    overflow-y: auto;
+    padding: 30px;
+    background: #f8f9fa;
+  }
+
+  .notif-item {
+    background: white;
+    border-radius: 20px;
+    padding: 18px;
+    margin-bottom: 16px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    position: relative;
+    transition: 0.3s;
+  }
+  .notif-item:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
+
+  .notif-item.nao-lida::before {
+    content: "";
+    position: absolute;
+    top: 20px; left: 16px;
+    width: 11px; height: 11px;
+    background: rgb(4, 44, 94);
+    border-radius: 50%;
+  }
+
+  .notif-icone {
+    width: 50px; height: 50px;
+    border-radius: 16px;
+    background: rgb(4, 44, 94);
+    float: left; margin-right: 16px;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 24px; font-weight: bold;
+  }
+
+  .notif-texto { margin-left: 66px; padding-top: 4px; }
+  .notif-titulo { font-weight: bold; color: rgb(4, 44, 94); margin: 0 0 6px; font-size: 16px; }
+  .notif-mensagem { color: #000; margin: 0 0 8px; font-size: 14.5px; line-height: 1.4; }
+  .notif-data { font-size: 12.5px; color: #888; }
+
+  .limpar-tudo {
+    width: 100%; height: 50px; border: none; border-radius: 20px;
+    background: rgb(4, 44, 94); color: white; font-weight: bold; font-size: 15px;
+    cursor: pointer; margin-top: 20px;
+  }
+  .limpar-tudo:hover { background: rgb(24, 104, 196); }
+</style>
+
+<!-- Fundo escuro (igual ao da aba de descontos) -->
+<div class="overlay-fixo-notif" 
+     onclick="this.style.display='none'; document.getElementById('abaNotificacoesAberta').style.display='none';">
+</div>
+
+<!-- ABA DE NOTIFICAÇÕES JÁ ABERTA (igualzinha à de descontos) -->
+<div id="abaNotificacoesAberta">
+  <div class="abaNotif-header">
+    <h2>Notificações</h2>
+    <button class="fechar-aba" 
+            onclick="document.getElementById('abaNotificacoesAberta').style.display='none'; document.querySelector('.overlay-fixo-notif').style.display='none';">
+      ×
+    </button>
+  </div>
+
+  <div class="abaNotif-conteudo">
+
+    <div class="notif-item nao-lida">
+      <div class="notif-icone">New</div>
+      <div class="notif-texto">
+        <p class="notif-titulo">Novo pedido recebido</p>
+        <p class="notif-mensagem">Cliente Ana Costa finalizou a compra #1623</p>
+        <p class="notif-data">Há 2 minutos</p>
+      </div>
+    </div>
+
+    <div class="notif-item nao-lida">
+      <div class="notif-icone">New</div>
+      <div class="notif-texto">
+        <p class="notif-titulo">Estoque baixo</p>
+        <p class="notif-mensagem">Apenas 4 unidades do produto "Mouse Gamer"</p>
+        <p class="notif-data">Há 15 minutos</p>
+      </div>
+    </div>
+
+    <div class="notif-item">
+      <div class="notif-icone">New</div>
+      <div class="notif-texto">
+        <p class="notif-titulo">Pagamento confirmado</p>
+        <p class="notif-mensagem">Pedido #1619 pago via cartão</p>
+        <p class="notif-data">Há 1 hora</p>
+      </div>
+    </div>
+
+    <div class="notif-item">
+      <div class="notif-icone">New</div>
+      <div class="notif-texto">
+        <p class="notif-titulo">Nova mensagem</p>
+        <p class="notif-mensagem">Cliente perguntou sobre frete grátis</p>
+        <p class="notif-data">Hoje, 10:14</p>
+      </div>
+    </div>
+
+    <button class="limpar-tudo">Limpar todas as notificações</button>
+  </div>
+</div>

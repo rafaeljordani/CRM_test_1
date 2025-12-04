@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Asstes/CSS/dasboard.css">
+    <script src="Asstes/JS/UI.js" defer></script>
+</body>
+</head>
+<body>
+  <div id="overlay">
+  <div id="conteudo"></div>  
+  </div>
+  <img src="Asstes/IMG/Fundo login.png" alt="" class="fundo">
+
+
+ <header class="Barra">
+    <img src="Asstes/IMG/Reage_Blue.jpeg" class="Logo" >
+    <div class="User">
+    <h2 id="Aqui eu tenho que ainda na hora da programação mudar">Rafael Jordani Coelho</h2>
+    </div>
+    <div class="avatar">
+    <img src="Asstes/IMG/880590.png" alt="User">
+    </div>
+    <div>
+      <button class="Adm_Funçao" onclick="carregarPagina('criar_conta.html')"> <img src="Asstes/IMG/Icone-adm.png" alt="" class="img_adm"></button>
+      <button class="Grafico_buton" onclick="carregarPagina('grafico.html')"><img src="Asstes/IMG/grafico_ymg.png" alt="" class="img_grafico"></button>
+      <button class="MSG_buton" onclick="carregarPagina('Notificação.html')"><img src="Asstes/IMG/MSG_img.png" alt="" class="img_MSG"></button>
+
+    </div>
+
+</header>
+
+
+
+ <div class="Barra_Util">
+  <input type="search" class="Pesquisa_bara_util" placeholder="Digite o nome do cliente">
+  <button class="button_Lupa" onclick="limparPesquisa()">
+    <script>
+  function limparPesquisa() {
+    document.querySelector(".Pesquisa_bara_util").value = "";}
+</script>
+    <img src="Asstes/IMG/Lupa.png" class="ira_ser_uma_imagem">
+  </button>
+</div>
+
+
+
+ <div class="Area_funçoes">
+  <div class="Btn_1_Container">
+   <button onclick="carregarPagina('Tela_clientes.html')" class="Btn_1">
+  <img src="Asstes/IMG/Add_cliente.png" alt="Adicionar" class="btn-img">
+</button>
+ <span class="Btn_1_Texto">Add clientes</span>
+  </div>
+
+
+  
+ <div class="Btn_2_Container">
+   <button class="Btn_2">
+<img src="Asstes/IMG/Procutação.png" alt="Adicionar" class="btn_2-img">
+   </button>
+   <span class="Btn_2_Texto">Procuração</span>
+  </div>
+
+  <div class="Btn_3_Container">
+   <button class="Btn_3">
+    <img src="Asstes/IMG/Contrato.png" alt="Adicionar" class="btn_3-img">
+   </button>
+   <span class="Btn_3_Texto">Contrato de prestação</span>
+   </div>
+
+   <div class="Btn_4_Container">
+   <button class="Btn_4" onclick="window.location.href='Planilha.html'"> 
+   <img src="Asstes/IMG/Planilha.png" alt="Adicionar" class="btn_4-img">
+   </button>
+   <span class="Btn_4_Texto">Planilha variavel</span>
+</div>
+
+   <button class="Btn_5"></button>
+   <button class="Btn_6"></button>
+   <button class="Btn_7"></button>
+   <button class="Btn_8"></button>
+   <button class="Btn_9"></button>
+   <button class="Btn_10"></button>
+ </div>
+
+
+
+</body>
+</html>

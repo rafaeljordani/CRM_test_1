@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8" />
+<title>Simulação Viacredi Base Correta</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<style>
+  body{background:#f3f6fb; padding:22px; margin:0;}
+  .card{background:#fff; border-radius:10px; padding:18px; box-shadow:0 6px 24px rgba(12,30,60,.08); max-width:1100px; margin:0 auto;}
+  h1{margin:0 0 12px; color:#0b4ea2; font-size:20px;}
+  .grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:12px; margin-bottom:12px;}
+  label{display:block; font-size:13px; color:#333; margin-bottom:6px;}
+  input[type=number], input[type=text] {width:100%; padding:8px 10px; border:1px solid #d6ddec; border-radius:6px; font-size:14px;}
+  .actions{display:flex; gap:8px; margin-top:6px;}
+  button{background:#0b4ea2; color:#fff; border:0; padding:8px 12px; border-radius:6px; cursor:pointer;}
+  button.secondary{background:#e7eefc; color:#0b4ea2;}
+  table{width:100%; border-collapse:collapse; margin-top:16px; font-size:13px;}
+  th{background:#0b4ea2; color:#fff; padding:8px; text-align:right; font-weight:600;}
+  td{padding:8px; border:1px solid #e6eef9; text-align:right;}
+  td.left{ text-align:left; }
+  .negative{color:#c93030;}
+  .small{font-size:12px; color:#666;}
+  .foot {display:flex; justify-content:space-between; gap:10px; margin-top:12px; align-items:center;}
+  input.tabelaInput{width:80px; text-align:right; font-size:12px; padding:2px 4px;}
+  @media (max-width:720px){ th, td{font-size:12px; padding:6px;} h1{font-size:18px} input.tabelaInput{width:60px} }
+</style>
+
+</head>
+<body>
+
+<div class="card">
+  <h1>Simulação</h1>
+
+  <div class="grid">
+    <div>
+      <label>Saldo Original (R$)</label>
+      <input id="saldoOriginal" type="number" value="23083.40" step="0.01">
+    </div>
+    <div>
+      <label>Entrada (R$)</label>
+      <input id="entrada" type="number" value="500" step="0.01">
+    </div>
+    <div>
+      <label>Juros Mensal (%)</label>
+      <input id="jurosPct" type="number" value="1.5" step="0.01">
+    </div>
+    <div>
+      <label>Parcelas (n)</label>
+      <input id="parcelasTot" type="number" value="49" step="1" min="1">
+    </div>
+  </div>
+
+  <div class="actions">
+    <button onclick="rodar()">Calcular</button>
+    <button class="secondary" onclick="exportarExcel()">Exportar Excel</button>
+
+    <!-- BOTÃO VOLTAR -->
+    <button class="secondary" onclick="window.location.href='dashboard.html'">Voltar</button>
+
+    <div style="margin-left:auto;" class="small">Pagamentos editáveis por mês.</div>
+</div>
+
+
+  <table id="tabela">
+    <thead>
+      <tr>
+        <th>Mês</th>
+        <th>Pagamento (R$)</th>
+        <th>Juros (R$)</th>
+        <th>Amortização (R$)</th>
+        <th>Saldo Devedor (R$)</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <div class="foot">
+    <div id="resumo" class="small"></div>
+  </div>
+</div>
+
+<script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+<script>
+
+// formata moeda BR
+function moedaBR(v) {
+  return v.toLocaleString("pt-BR", {minimumFractionDigits:2, maximumFractionDigits:2});
+}
+
+// parcela PRICE
+function parcelaPrice(saldo, r, n) {
+  if(r===0) return saldo/n;
+  const numer = r*Math.pow(1+r,n);
+  const denom = Math.pow(1+r,n)-1;
+  return saldo*(numer/denom);
+}
+
+function rodar() {
+  const saldoOriginal = parseFloat(document.getElementById("saldoOriginal").value) || 0;
+  const entrada = parseFloat(document.getElementById("entrada").value) || 0;
+  const jurosPct = parseFloat(document.getElementById("jurosPct").value) || 0;
+  const parcelasTot = parseInt(document.getElementById("parcelasTot").value) || 1;
+
+  const tbody = document.querySelector("#tabela tbody");
+  tbody.innerHTML = "";
+
+  let saldoAtual = saldoOriginal - entrada;
+
+  // linha 0: entrada
+  const tr0 = document.createElement("tr");
+  tr0.innerHTML = `
+    <td class="left">0</td>
+    <td>${moedaBR(entrada)}</td>
+    <td>0,00</td>
+    <td>${moedaBR(entrada)}</td>
+    <td>${moedaBR(saldoAtual)}</td>
+  `;
+  tbody.appendChild(tr0);
+
+  const r = jurosPct/100;
+
+  for(let i=1;i<=parcelasTot;i++){
+    const valorParcela = parcelaPrice(saldoAtual,r,parcelasTot-i+1);
+    const jurosMes = saldoAtual*r;
+    const amortizacao = valorParcela - jurosMes;
+    const saldoFinal = saldoAtual - amortizacao;
+
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td class="left">${i}</td>
+      <td><input type="number" class="tabelaInput" value="${valorParcela.toFixed(2)}" step="0.01"></td>
+      <td>${moedaBR(jurosMes)}</td>
+      <td class="${amortizacao<0?'negative':''}">${moedaBR(amortizacao)}</td>
+      <td>${moedaBR(saldoFinal)}</td>
+    `;
+    tbody.appendChild(tr);
+
+    saldoAtual = saldoFinal;
+  }
+
+  document.getElementById("resumo").textContent = 
+    `Saldo inicial após entrada: R$ ${moedaBR(saldoOriginal-entrada)} • Juros: ${jurosPct}% ao mês • Parcelas: ${parcelasTot}`;
+
+  tbody.querySelectorAll("input.tabelaInput").forEach(input=>{
+    input.addEventListener("input", recalcular);
+  });
+}
+
+function recalcular(){
+  const saldoOriginal = parseFloat(document.getElementById("saldoOriginal").value) || 0;
+  const entrada = parseFloat(document.getElementById("entrada").value) || 0;
+  const jurosPct = parseFloat(document.getElementById("jurosPct").value) || 0;
+  const r = jurosPct/100;
+
+  const tbody = document.querySelector("#tabela tbody");
+  let saldoAtual = saldoOriginal - entrada;
+
+  tbody.querySelectorAll("tr").forEach((tr,idx)=>{
+    if(idx===0) return;
+
+    const pagamento = parseFloat(tr.querySelector("input.tabelaInput").value)||0;
+    const jurosMes = saldoAtual*r;
+    const amortizacao = pagamento - jurosMes;
+    const saldoFinal = saldoAtual - amortizacao;
+
+    tr.cells[2].textContent = moedaBR(jurosMes);
+    tr.cells[3].textContent = moedaBR(amortizacao);
+    tr.cells[4].textContent = moedaBR(saldoFinal);
+
+    saldoAtual = saldoFinal;
+  });
+}
+
+function exportarExcel(){
+  const ws_data = [];
+  const headers = Array.from(document.querySelectorAll("#tabela thead th")).map(h=>h.innerText);
+  ws_data.push(headers);
+
+  document.querySelectorAll("#tabela tbody tr").forEach(tr=>{
+    const row = Array.from(tr.children).map(td=>td.innerText);
+    ws_data.push(row);
+  });
+
+  const wb = XLSX.utils.book_new();
+  const ws = XLSX.utils.aoa_to_sheet(ws_data);
+  XLSX.utils.book_append_sheet(wb,ws,"Simulação");
+  XLSX.writeFile(wb,"simulacao_viacredi.xlsx");
+}
+
+rodar();
+
+</script>
+</body>
+</html>
