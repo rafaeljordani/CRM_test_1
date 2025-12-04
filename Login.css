@@ -1,0 +1,114 @@
+.fundo {
+ position: fixed;
+ top: 30%;
+left: -5%;
+}
+
+.Box_Login {
+  background-color: white;
+  width: 500px;
+  height: 500px;
+  border-radius: 30px;
+
+  /* centralização */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  padding: 40px;
+  box-sizing: border-box;
+
+  /* sombra atrás da caixa */
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+
+}
+
+/* título de login */
+.Text_Login {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 40px;
+  margin-bottom: 50px;
+  color:rgb(4, 44, 94);
+}
+
+/* container dos inputs */
+.text_top_user {
+  display: flex;
+  flex-direction: column; /* label acima do input */
+  margin-bottom: 15px;
+  
+}
+
+/* labels */
+.text_top_user label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #818181;
+  font-size: 14px;
+}
+.text_top_key label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #818181;
+  font-size: 14px;
+}
+
+/* inputs com borda arredondada */
+.input_Login {
+  border: none;
+  height: 50px;
+  width: 100%;
+  border-radius: 20px;      /* borda arredondada */
+  font-family: Arial, sans-serif;
+  text-indent: 15px;       /* espaço interno do texto */
+  font-size: 15px;
+  box-sizing: border-box;
+    
+  /* sombra atrás da caixa */
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.input_Login::placeholder {
+  color: black; /* placeholder preto */
+}
+
+.input_Login:focus {
+   outline: none;
+  box-shadow: 0 0 10px rgba(24, 98, 182, 0.548); /* sombra azul leve */
+  background-color: rgba(44, 140, 250, 0.05);  /* fundo levemente azul */
+}
+
+.btn_Login {
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-radius: 20px;        /* mesma borda arredondada dos inputs */
+  background-color: rgb(4, 44, 94);    
+  color: white;               /* cor do texto */
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 30px;           /* espaço entre último input e botão */
+  transition: background-color 0.3s ease;
+}
+
+.btn_Login:hover {
+  background-color:  rgb(24, 104, 196);;     /* muda cor ao passar o mouse */
+}
+
+.btn_Login:active {
+  background-color: rgb(6, 61, 138); /* cor quando o botão está pressionado */
+}
+
+.text_baixo_botao {
+  
+  position: fixed;
+  left: 43%;
+  top: 83%;
+  height: 70px;
+  width: 70px;
+}
+
+

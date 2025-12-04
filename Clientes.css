@@ -1,0 +1,179 @@
+body {
+  background-color: transparent;
+}
+
+.tela_cadastro_cliente {
+  margin-top: 350px;
+  margin-left: 50px;
+  width: 90%;
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0px 5px 20px rgba(0,0,0,0.15);
+  font-family: Arial, sans-serif;
+}
+
+.titulo_aba {
+  text-align: center;
+  color: #042C5E;
+  font-size: 26px;
+  margin-bottom: 30px;
+}
+
+.formulario_cliente {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+}
+
+.campo label {
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #042C5E;
+}
+
+.campo input,
+.campo select {
+  padding: 12px;
+  font-size: 15px;
+  border: 2px solid #d7d7d7;
+  border-radius: 10px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.campo input:focus,
+.campo select:focus {
+  border-color: #064589;
+  box-shadow: 0 0 5px rgba(6, 69, 137, 0.5);
+}
+
+/* --- NOVA ÁREA DE PROCESSO --- */
+.secao-processo {
+  margin-top: 40px;
+}
+
+.titulo_processos {
+  font-size: 22px;
+  font-weight: bold;
+  color: #042C5E;
+  margin-bottom: 20px;
+}
+
+/* Campos do processo seguem o mesmo estilo */
+.formulario_processo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+.campo_processo {
+  display: flex;
+  flex-direction: column;
+}
+
+.campo_processo label {
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #042C5E;
+}
+
+.campo_processo input,
+.campo_processo select {
+  padding: 12px;
+  font-size: 15px;
+  border: 2px solid #d7d7d7;
+  border-radius: 10px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.campo_processo input:focus,
+.campo_processo select:focus {
+  border-color: #064589;
+  box-shadow: 0 0 5px rgba(6, 69, 137, 0.5);
+}
+
+/* CAMPO LONGO (OBSERVAÇÕES) */
+.campo-longo {
+  grid-column: 1 / -1;  /* ocupar largura total */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.campo-longo label {
+  font-weight: bold;
+  color: #042C5E;
+}
+
+.campo-longo textarea {
+  width: 100%;
+  min-height: 230px;
+  padding: 14px;
+  font-size: 15px;
+  border-radius: 10px;
+  border: 2px solid #d7d7d7;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.campo-longo textarea:focus {
+  outline: none;
+  border-color: #064589;
+  box-shadow: 0 0 5px rgba(6, 69, 137, 0.5);
+}
+
+/* Upload de documentos */
+.upload_arquivos {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+}
+
+.upload_arquivos label {
+  font-weight: bold;
+  color: #042C5E;
+  margin-bottom: 6px;
+}
+
+.upload_arquivos input {
+  padding: 12px;
+  border: 2px dashed #888;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* Botão final */
+.btn-salvar {
+  margin-top: 40px;
+  padding: 22px 25px;
+  border: none;
+  border-radius: 8px;
+  background-color: #003A73;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0px 3px 8px rgba(0,0,0,0.3);
+
+  /* faz o botão ir para o final */
+  display: block;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.btn-salvar:hover {
+  background-color: #0054A6;
+  transform: scale(1.03);
+}
+
+.btn-salvar:active {
+  transform: scale(0.97);
+}

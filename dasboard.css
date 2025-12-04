@@ -1,0 +1,431 @@
+
+
+body {
+  background-color: rgb(255, 255, 255)
+; 
+  margin: 0;
+  padding-top: 140px; /* evita conteúdo por baixo da barra */
+}
+
+/* Painel inferior */
+#overlay {
+  position: fixed;
+  bottom: 0;             /* agora abre NA PARTE DE BAIXO */
+  left: 0;
+  width: 100%;           /* largura total */
+  height: 60%;           /* tamanho do painel – você pode ajustar */
+  background: transparent;
+  border: none;
+  display: none;         /* começa escondido */
+  z-index: 999;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+/* Conteúdo carregado */
+#conteudo {
+  width: 100%;
+  height: 100%;
+}
+
+
+
+.fundo {
+  position: fixed;
+  top: 50%;
+  left: -5%;
+}
+.Barra {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  background-color: rgb(4, 44, 94);
+  align-items: center;
+  padding: 0 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.Logo {
+  height: 97px ;
+  width: 200px;
+  position: fixed;
+  top: 0px;
+  left: 40px;
+}
+
+
+.User {
+ font-size: 12px;
+ position: fixed;
+ top: 47px;
+ left: 41%;
+ color: rgb(255, 255, 255);
+
+}
+
+
+.avatar {
+  width: 30px;
+  height: 40px;
+  border-radius: 80%;
+  overflow: hidden;
+  position: fixed;
+  top: 47px;
+  left: 38.7%;
+}
+
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.Adm_Funçao {
+  background-color: transparent;
+  border: none;
+  position: fixed;
+  left: 90%;
+  cursor: pointer;
+}
+
+.img_adm {
+ width: 35px ;
+ height: 35px;
+ position: fixed;
+ top: 53px;
+}
+
+.Grafico_buton {
+ background-color: transparent;
+ border: none;
+ position: fixed;
+ left: 92.5%;
+ cursor: pointer;
+
+}
+
+.img_grafico {
+ width: 35px ;
+ height: 35px;
+ position: fixed;
+ top: 53px;
+
+}
+
+.MSG_buton {
+ background-color: transparent;
+ border: none;
+ position: fixed;
+ left: 95%;
+ cursor: pointer;
+
+}
+
+.img_MSG {
+ width: 30px ;
+ height: 30px;
+ position: fixed;
+ top: 58px;
+
+}
+
+
+
+
+
+.Barra_Util { 
+  position: fixed;
+  top: 10%;
+  width: 100%;  
+  height: 40px;
+  background: linear-gradient(to right, #042C5E ,white);
+  box-shadow: 0px 0px 10px black;
+
+}
+
+.Pesquisa_bara_util {
+  position: fixed;
+  left: 38.5%;
+  top: 10.4%;
+  border: black;
+  border-radius: 15px;
+  width: 270px;
+  height: 33px;
+  outline: none;
+  padding-left: 30px;
+  background-color: white;
+   transition: all 0.3s ease; /* suaviza a animação */
+  
+}
+
+.Pesquisa_bara_util::placeholder {
+  color: black;
+
+}
+
+.Pesquisa_bara_util:focus {
+  width: 320px; /* aumenta levemente */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* adiciona sombra */
+}
+
+.ira_ser_uma_imagem {
+  object-fit: cover;
+   height: 20px;
+   width: 20px;
+   position: fixed;
+   left: 38.8%;
+   top: 10.9%;
+   border: none;
+}
+
+
+.button_Lupa {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
+}
+
+.Area_funçoes {
+  position: fixed;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1200px;
+  height: 110px;
+  border: none;
+}
+
+/* area botoes funçoes  */
+.Btn_1 {
+  width: 105px;
+  height: 105px;
+  border-radius: 10px;
+  position: fixed;
+  left: 0.5%;
+  top: 3%;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  padding: 0;
+  background-color: transparent;
+}
+
+.Btn_1 img {
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+/* TEXTO EMBAIXO */
+.Btn_1_Texto {
+  position: fixed;
+  left: 1.4%;
+  top: 105% ;
+  display: block;
+  font-size: 15px;
+  font-family: Arial, sans-serif;
+  color: black;
+
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* QUANDO PASSAR O MOUSE NO BOTÃO → aparece o texto */
+.Btn_1_Container:hover .Btn_1_Texto {
+  opacity: 1;
+}
+
+
+
+.Btn_2 {
+  width: 105px;
+  height: 105px;
+  border-radius: 10px;
+  position: fixed;
+  left: 10.5%;
+  top: 3%;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  padding: 0;
+}
+
+.Btn_2 img {
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+/* TEXTO EMBAIXO */
+.Btn_2_Texto {
+  position: fixed;
+  left: 11.7%;
+  top: 105% ;
+  font-size: 15px;
+  font-family: Arial, sans-serif;
+  color: black;
+
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* QUANDO PASSAR O MOUSE NO BOTÃO → aparece o texto */
+.Btn_2_Container:hover .Btn_2_Texto {
+  opacity: 1;
+}
+
+
+.Btn_3 {
+  width: 105px;
+  height: 105px;
+  background-color: transparent;
+  border: none;
+  border-radius: 10px;
+  position: fixed;
+  cursor: pointer;
+  overflow: hidden;
+  left: 20.5%;
+  top: 3%;
+  padding: 0;
+}
+
+.Btn_3 img {
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+/* TEXTO EMBAIXO */
+.Btn_3_Texto {
+  position: fixed;
+  left: 19%;
+  top: 105% ;
+  font-size: 15px;
+  font-family: Arial, sans-serif;
+  color: black;
+
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* QUANDO PASSAR O MOUSE NO BOTÃO → aparece o texto */
+.Btn_3_Container:hover .Btn_3_Texto {
+  opacity: 1;
+}
+
+
+
+
+.Btn_4 {
+  width: 105px;
+  height: 105px;
+  background-color: transparent;
+  border: none;
+  border-radius: 10px;
+  position: fixed;
+  left: 30.5%;
+  top: 3%;
+  cursor: pointer;
+  overflow: hidden;
+  padding: 0;
+}
+
+.Btn_4 img {
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+/* TEXTO EMBAIXO */
+.Btn_4_Texto {
+  position: fixed;
+  left: 30.5%;
+  top: 105% ;
+  font-size: 15px;
+  font-family: Arial, sans-serif;
+  color: black;
+
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* QUANDO PASSAR O MOUSE NO BOTÃO → aparece o texto */
+.Btn_4_Container:hover .Btn_4_Texto {
+  opacity: 1;
+}
+
+
+
+
+
+.Btn_5 {
+  width: 105px;
+  height: 105px;
+  background-color: red;
+  border: none;
+  border-radius: 10px;
+  position: fixed;
+  left: 40.5%;
+  top: 3%;
+}
+
+.Btn_6 {
+  width: 105px;
+  height: 105px;
+  background-color: red;
+  border: none;
+  border-radius: 10px;
+  position: fixed;
+  left: 50.5%;
+  top: 3%;
+}
+
+.Btn_7 {
+  width: 105px;
+  height: 105px;
+  background-color: red;
+  border: none;
+  border-radius: 10px;
+  position: fixed;
+  left: 60.5%;
+  top: 3%;
+}
+
+ .Btn_8 {
+  width: 105px;
+  height: 105px;
+  background-color: red;
+  border: none;
+  border-radius: 10px;
+  position: fixed;
+  left: 70.5%;
+  top: 3%;
+}
+
+.Btn_9 {
+  width: 105px;
+  height: 105px;
+  background-color: red;
+  border: none;
+  border-radius: 10px;
+  position: fixed;
+  left: 80.5%;
+  top: 3%;
+}
+
+.Btn_10 {
+  width: 105px;
+  height: 105px;
+  background-color: red;
+  border: none;
+  border-radius: 10px;
+  position: fixed;
+  left: 90.5%;
+  top: 3%;
+}
